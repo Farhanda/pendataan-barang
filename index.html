@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendataan Barang</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Pendataan Barang</h1>
+    <p class="subtitle">Form input &amp; daftar barang</p>
+  </header>
+
+  <main class="container">
+    <!-- Form Input Barang -->
+    <section class="card form-card">
+      <h2 id="form-title">Tambah Barang</h2>
+      <form id="barang-form" novalidate>
+        <input type="hidden" id="barang-id" />
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="kode">Kode Barang <span class="req">*</span></label>
+            <input type="text" id="kode" name="kode" placeholder="Mis. BRG-001" autocomplete="off" />
+            <small class="error" data-for="kode"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="nama">Nama Barang <span class="req">*</span></label>
+            <input type="text" id="nama" name="nama" placeholder="Mis. Pulpen" autocomplete="off" />
+            <small class="error" data-for="nama"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="kategori">Kategori</label>
+            <select id="kategori" name="kategori">
+              <option value="">- Pilih kategori -</option>
+              <option value="Alat Tulis">Alat Tulis</option>
+              <option value="Elektronik">Elektronik</option>
+              <option value="Perabot">Perabot</option>
+              <option value="Konsumsi">Konsumsi</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="jumlah">Jumlah <span class="req">*</span></label>
+            <input type="number" id="jumlah" name="jumlah" min="0" step="1" placeholder="0" />
+            <small class="error" data-for="jumlah"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="satuan">Satuan</label>
+            <input type="text" id="satuan" name="satuan" placeholder="Mis. pcs, box, kg" autocomplete="off" />
+          </div>
+
+          <div class="form-group">
+            <label for="harga">Harga Satuan (Rp)</label>
+            <input type="number" id="harga" name="harga" min="0" step="100" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">Simpan</button>
+          <button type="button" class="btn btn-ghost" id="reset-btn">Batal</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Daftar Barang -->
+    <section class="card list-card">
+      <div class="list-header">
+        <h2>Daftar Barang</h2>
+        <input type="search" id="search" placeholder="Cari kode / nama..." autocomplete="off" />
+      </div>
+
+      <div class="table-wrap">
+        <table id="barang-table">
+          <thead>
+            <tr>
+              <th>Kode</th>
+              <th>Nama</th>
+              <th>Kategori</th>
+              <th class="num">Jumlah</th>
+              <th>Satuan</th>
+              <th class="num">Harga</th>
+              <th class="num">Total</th>
+              <th class="actions-col">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="barang-tbody"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6" class="foot-label">Total Nilai Barang</td>
+              <td class="num" id="grand-total">Rp 0</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p id="empty-state" class="empty-state">Belum ada data barang. Silakan tambahkan melalui form di atas.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
